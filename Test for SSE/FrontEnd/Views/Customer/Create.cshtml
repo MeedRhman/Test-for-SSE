@@ -1,0 +1,168 @@
+﻿@model FrontEnd.Models.Customer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <table class="table table-bordered" >
+            
+            <tbody>
+               <tr>
+                   <td>
+                       @await Component.InvokeAsync("Customer")
+                   </td>
+               </tr>
+              
+
+                @*<vc:top-books count="6" ></vc:top-books>*@
+            </tbody>
+        </table>
+
+    </div>
+        <div class="col-md-8">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-md-12" style="background-color: black; color: white; padding: 20px;">
+                    <span>Actoin</span> <br />
+                    <button id="Editbtn" type="button" class="btn btn-sm btn-primary ">EDIT</button>
+                    <button id="savebtn" type="button" class="btn btn-sm btn-secondary ">SAVE</button>
+                    <button id="deletebtn" type="button" class="btn btn-sm btn-secondary ">DELETE</button>
+                    <button id="cancelbtn" type="button" class="btn btn-sm btn-secondary ">cancel</button>
+
+                </div>
+                <br />
+                <div class="col-md-12" style="background-color: black; color: white; padding: 20px;">
+                    <h4> Basic Information</h4>
+                    <div class="form-group ">
+                        <label asp-for="CustomerName" class="control-label"></label>
+                        <input asp-for="CustomerName" class="form-control" />
+                        <span asp-validation-for="CustomerName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FatherName" class="control-label"></label>
+                        <input asp-for="FatherName" class="form-control" />
+                        <span asp-validation-for="FatherName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MotherName" class="control-label"></label>
+                        <input asp-for="MotherName" class="form-control" />
+                        <span asp-validation-for="MotherName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MaterialStatus" class="control-label col-md-1"></label>
+                        <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1" checked> SINGLE </label>
+                        <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1">MARRIED</label>
+                        <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1">OTHER</label>
+                        <span asp-validation-for="MaterialStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        @for (int i = 0; i < @ViewData["Countries"].Count; i++)
+                        {
+                            <label asp-for="@ViewData["Countries"]." class="control-label">Country</label>
+                            <select asp-for="CountoryId" class="form-control" asp-items="ViewBag.Teachers">
+                            </select>
+                            <span asp-validation-for="CountoryId" class="text-danger"></span>
+                        }
+
+                    </div>
+                    <div class="form-group">
+
+                        <label asp-for="ProfilePhoto" class="control-label"></label>
+                        <input type="file" asp-for="ProfilePhoto" class="form-control" />
+                        <span asp-validation-for="ProfilePhoto" class="text-danger"></span>
+                        <!--
+                 File : <input type="file" name="ProfilePhoto" />
+            -->
+                    </div>
+                </div>
+                <br />
+                <div class="col-md-12" style="background-color: black; color: white; padding: 20px;">
+                    <div class="form-group">
+                        <h4> Other Information</h4>
+                        <table class="table table-bordered" id="addresstable">
+                            <thead>
+                                <tr>
+                                    <th>Address</th>
+                                    <th>
+
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.CustomerAddresses.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                @Html.EditorFor(m => m.CustomerAddresses[i].customerAddress, new { AddHtmlAttributes = new { @class = "form-control" } })
+                                            </div>
+
+                                        </td>
+                                        <td>
+                                            <button id="dummybtn-@i" type="button" class="btn btn-sm btn-secondary invisible">dummy</button>
+                                            <button id="addbtn-@i" type="button" class="btn btn-sm btn-secondary visible"
+                                                    onclick="AddItem(this)" style="left:75%; position:absolute">
+                                                Add
+                                            </button>
+                                            <button id="btnremove-@i" type="button" class="btn btn-sm btn-danger invisible"
+                                                    onclick="DeleteItem(this)" style="left:90%; position:absolute">
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <br />
+                <input type="hidden" id="hdnLastIndex" value="0" />
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <script>
+        function DeleteItem(btn) {
+            $(btn).closest('tr').remove();
+        }
+        function AddItem(btn) {
+            var table = document.getElementById('addresstable');
+            var rows = document.getElementsByTagName('tr');
+            var rowOuterHtml = rows[rows.length - 1].outerHTML;
+            var lastrowIdx = document.getElementById('hdnLastIndex').value;
+
+            var nextrowIdx = eval(lastrowIdx) + 1;
+            document.getElementById('hdnLastIndex'), value = nextrowIdx;
+            rowOuterHtml = rowOuterHtml.replaceAll('_' + lastrowIdx + '_', '_' + nextrowIdx + '_');
+            rowOuterHtml = rowOuterHtml.replaceAll('[_' + lastrowIdx + ']', '[' + nextrowIdx + ']');
+            rowOuterHtml = rowOuterHtml.replaceAll('_' + lastrowIdx, '_' + nextrowIdx);
+
+            var newRow = table.insertRow();
+            newRow.innerHTML = rowOuterHtml
+
+            var btnAddID = btn.id;
+
+            var btnDeleteid = btnAddID.replaceAll('addbtn', 'btnremove');
+
+            var delbtn = document.getElementById(btnDeleteid);
+
+            delbtn.classList.add('visbile');
+            delbtn.classList.remove('invisbile');
+
+            var addbtn = document.getElementById(btnAddID);
+
+            addbtn.classList.remove('visbile');
+            addbtn.classList.add('invisbile');
+
+
+        }
+    </script>

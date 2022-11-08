@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Customer>
+<!-- <div class="row"> -->
+@foreach (var customer in Model)
+{
+    <div class="col-md-4">
+        <partial name="_CustomerName" model="customer" />
+    </div>
+}
+
+<!-- </div> -->
