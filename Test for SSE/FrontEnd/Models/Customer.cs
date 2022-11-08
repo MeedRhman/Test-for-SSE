@@ -22,7 +22,7 @@ namespace FrontEnd.Models
 
         //  public string CustomerPhoto { get; set; }
 
-        public List<CustomerAddress> CustomerAddresses { get; set; }
+        public List<CustomerAddress> CustomerAddresses { get; set; } = new List<CustomerAddress>();
 
 
 

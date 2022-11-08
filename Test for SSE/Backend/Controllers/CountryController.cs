@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
-    public class CountryController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CountryController : ControllerBase
     {
         private readonly CountoryRepo _countryRepo;
         private readonly IWebHostEnvironment _webHost;
@@ -22,9 +24,11 @@ namespace Backend.Controllers
 
         public IEnumerable<Country> Get()
         {
-            List<Country> countries;
-            countries = _countryRepo.GetAll().ToList();
-            return countries;
+            List<Country> Countories;
+            Countories = _countryRepo.GetAll().ToList();
+
+            return Countories;
         }
+       
     }
 }

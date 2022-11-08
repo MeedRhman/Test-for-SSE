@@ -32,12 +32,13 @@ namespace FrontEnd.Controllers
         
 
       
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             Customer customer = new Customer();
             customer.CustomerAddresses.Add(new CustomerAddress() { CustomerAddressId = 1});
-            var countries = GetCountryAsync();
-            ViewData["Countries"] = new SelectList((System.Collections.IEnumerable)countries, "CountoryId", "CountryName");
+            var countries = await GetCountryAsync();
+          //  ViewData["Countries"] = new SelectList((System.Collections.IEnumerable)countries, "CountoryId", "CountryName");
+            ViewBag.Countrylist =  new SelectList(countries, "CountoryId", "CountryName");
             return View("Create", customer);
         }
         [HttpPost]
@@ -56,6 +57,7 @@ namespace FrontEnd.Controllers
             return View();
         }
 
+        
         public async Task<IEnumerable<Country>> GetCountryAsync()
         {
             var _countries = new List<Country>();

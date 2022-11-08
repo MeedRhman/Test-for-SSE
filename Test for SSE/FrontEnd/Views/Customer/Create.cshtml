@@ -28,9 +28,9 @@
                 <div class="col-md-12" style="background-color: black; color: white; padding: 20px;">
                     <span>Actoin</span> <br />
                     <button id="Editbtn" type="button" class="btn btn-sm btn-primary ">EDIT</button>
-                    <button id="savebtn" type="button" class="btn btn-sm btn-secondary ">SAVE</button>
-                    <button id="deletebtn" type="button" class="btn btn-sm btn-secondary ">DELETE</button>
-                    <button id="cancelbtn" type="button" class="btn btn-sm btn-secondary ">cancel</button>
+                    <button id="savebtn" type="button" class="btn btn-sm btn-primary ">SAVE</button>
+                    <button id="deletebtn" type="button" class="btn btn-sm btn-primary ">DELETE</button>
+                    <button id="cancelbtn" type="button" class="btn btn-sm btn-primary ">cancel</button>
 
                 </div>
                 <br />
@@ -52,20 +52,19 @@
                         <span asp-validation-for="MotherName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="MaterialStatus" class="control-label col-md-1"></label>
+                        <label asp-for="MaterialStatus" class="control-label col-md-2"></label>
                         <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1" checked> SINGLE </label>
                         <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1">MARRIED</label>
                         <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1">OTHER</label>
                         <span asp-validation-for="MaterialStatus" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        @for (int i = 0; i < @ViewData["Countries"].Count; i++)
+                        @if (ViewBag.Countrylist != null)
                         {
-                            <label asp-for="@ViewData["Countries"]." class="control-label">Country</label>
-                            <select asp-for="CountoryId" class="form-control" asp-items="ViewBag.Teachers">
-                            </select>
-                            <span asp-validation-for="CountoryId" class="text-danger"></span>
+
+                           @Html.DropDownListFor(m=>m.CountryId, ViewBag.Countrylist as SelectList ,"-- Seclect Countrys", new { @class="form-control"})
                         }
+                       
 
                     </div>
                     <div class="form-group">
