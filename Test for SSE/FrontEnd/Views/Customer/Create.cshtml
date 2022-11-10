@@ -7,126 +7,144 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <table class="table table-bordered">
 
-            <tbody>
-                <tr>
-                    <td>
-                        @await Component.InvokeAsync("Customer")
-                    </td>
-                </tr>
+        <fieldset style="border: 1px solid ; border-radius: 15px ;padding-left:1rem">
+            <legend style="color:blue">Customer List</legend>
+            <table class="table table-borderless">
+
+                <tbody>
+                    <tr>
+                        <td>
+                            @await Component.InvokeAsync("Customer")
+                        </td>
+                    </tr>
 
 
-                @*<vc:top-books count="6" ></vc:top-books>*@
-            </tbody>
-        </table>
+                    @*<vc:top-books count="6" ></vc:top-books>*@
+                </tbody>
+            </table>
+        </fieldset>
+       
 
     </div>
     <div class="col-md-8">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="col-md-12" style="background-color: black; color: white; padding: 20px;">
-                <span>Actoin</span> <br />
-                <div class="form-group">
-                    <input type="submit" value="SAVE" class="btn btn-sm btn-primary" />
-                    <button id="Editbtn" type="button" class="btn btn-sm btn-primary ">EDIT</button>
-                    <button id="deletebtn" type="button" class="btn btn-sm btn-primary ">DELETE</button>
-                    <button id="cancelbtn" type="button" class="btn btn-sm btn-primary ">cancel</button>
-                </div>
+            <div class="col-md-12">
+                <fieldset style="border: 1px solid ; border-radius: 15px ;padding-left:1rem">
+                    <legend style="color:blue">Actions</legend>
+                    <div class="form-group">
+                        <input type="submit" value="SAVE" class="btn btn-sm btn-primary" />
+                        <button id="Editbtn" type="button" class="btn btn-sm btn-primary ">EDIT</button>
+                        <button id="deletebtn" type="button" class="btn btn-sm btn-primary ">DELETE</button>
+                        <button id="cancelbtn" type="button" class="btn btn-sm btn-primary ">cancel</button>
+                    </div>
+                </fieldset>
+
 
 
             </div>
             <br />
-            <div class="col-md-12" style="background-color: black; color: white; padding: 20px;">
-                <h4> Basic Information</h4>
-                <div class="form-group ">
-                    <label asp-for="CustomerName" class="control-label"></label>
-                    <input asp-for="CustomerName" class="form-control" />
-                    <span asp-validation-for="CustomerName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="FatherName" class="control-label"></label>
-                    <input asp-for="FatherName" class="form-control" />
-                    <span asp-validation-for="FatherName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="MotherName" class="control-label"></label>
-                    <input asp-for="MotherName" class="form-control" />
-                    <span asp-validation-for="MotherName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="MaterialStatus" class="control-label col-md-2"></label>
-                    <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1" checked> SINGLE </label>
-                    <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1">MARRIED</label>
-                    <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1">OTHER</label>
-                    <span asp-validation-for="MaterialStatus" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    @if (ViewBag.Countrylist != null)
-                    {
+            <div class="col-md-12" style="color: blue; margin:5px">
 
-                        @Html.DropDownListFor(m => m.CountryId, ViewBag.Countrylist as SelectList, "-- Seclect Countrys", new { @class = "form-control" })
-                    }
+                <fieldset style="border: 1px solid ; border-radius: 15px ;padding-left:1rem">
+                    <legend style="color:blue">Basic Information</legend>
+                    <div class="form-group col-md-11">
+                        <label asp-for="CustomerName" class="control-label"></label>
+                        <input asp-for="CustomerName" class="form-control" />
+                        <span asp-validation-for="CustomerName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11">
+                        <label asp-for="FatherName" class="control-label"></label>
+                        <input asp-for="FatherName" class="form-control" />
+                        <span asp-validation-for="FatherName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11">
+                        <label asp-for="MotherName" class="control-label"></label>
+                        <input asp-for="MotherName" class="form-control" />
+                        <span asp-validation-for="MotherName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MaterialStatus" class="control-label col-md-2"></label>
+                        <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1" checked> SINGLE </label>
+                        <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1">MARRIED</label>
+                        <label class="control-label col-md-2"><input type="radio" asp-for="MaterialStatus" value="1">OTHER</label>
+                        <span asp-validation-for="MaterialStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11">
+                        @if (ViewBag.Countrylist != null)
+                        {
+
+                            @Html.DropDownListFor(m => m.CountryId, ViewBag.Countrylist as SelectList, "-- Seclect Countrys", new { @class = "form-control" })
+                        }
 
 
-                </div>
-                <div class="form-group">
+                    </div>
+                    <div class="form-group col-md-11">
 
-                    <label asp-for="ProfilePhoto" class="control-label"></label>
-                    <input type="file" asp-for="ProfilePhoto" class="form-control" />
-                    <span asp-validation-for="ProfilePhoto" class="text-danger"></span>
-                    <!--
-                         File : <input type="file" name="ProfilePhoto" />
-                    -->
-                </div>
+                        <label asp-for="ProfilePhoto" class="control-label"></label>
+                        <input type="file" asp-for="ProfilePhoto" class="form-control" />
+                        <span asp-validation-for="ProfilePhoto" class="text-danger"></span>
+                        <!--
+                     File : <input type="file" name="ProfilePhoto" />
+                -->
+                    </div>
+                </fieldset>
+
             </div>
             <br />
-            <div class="col-md-12" style="background-color: black; color: white; padding: 20px;">
+            <div class="col-md-12" style="color: blue; margin:5px">
+
+
                 <div class="form-group">
-                    <h4> Other Information</h4>
-                    <table class="table table-striped table-sm" id="addresstable">
-                        <thead>
-                            <tr>
-                                <th>Address</th>
-                                <th>
-
-                                </th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @for (int i = 0; i < Model.CustomerAddresses.Count; i++)
-                            {
+                    <fieldset style="border: 1px solid ; border-radius: 15px ;padding-left:1rem">
+                        <legend style="color:blue">Other Information</legend>
+                        <table class="table table-striped table-sm" id="addresstable">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <div class="form-group">
+                                    <th class="text-center">Address</th>
+                                    <th>
 
-                                            @Html.EditorFor(m => m.CustomerAddresses[i].customerAddress, new { AddHtmlAttributes = new { @class = "form-control" } })
+                                    </th>
 
-                                            <!--
-                                                                                        <label asp-for="CustomerAddresses[i].customerAddress" class="control-label"></label>
-                                                                                        <input asp-for="CustomerAddresses[i].customerAddress" class="form-control" />
-                                            -->
-                                        </div>
-
-                                    </td>
-                                    <td>
-                                        <div class="form-group">
-                                            <button id="dummybtn-@i" type="button" class="btn btn-sm btn-secondary invisible">dummy</button>
-                                            <button id="addbtn-@i" type="button" class="btn btn-sm btn-secondary visible"
-                                                    onclick="AddItem(this)" style="left:75%; position:absolute">
-                                                Add
-                                            </button>
-                                            <button id="btnremove-@i" type="button" class="btn btn-sm btn-danger invisible"
-                                                    onclick="DeleteItem(this)" style="left:75%; position:absolute">
-                                                Delete
-                                            </button>
-                                        </div>
-                                    </td>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.CustomerAddresses.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="form-group ">
+
+                                                @Html.EditorFor(m => m.CustomerAddresses[i].customerAddress, new { AddHtmlAttributes = new { @class = "form-control col-md-8" } })
+
+                                                <!--
+                                                                                    <label asp-for="CustomerAddresses[i].customerAddress" class="control-label"></label>
+                                                                                    <input asp-for="CustomerAddresses[i].customerAddress" class="form-control" />
+                                        -->
+                                            </div>
+
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <button id="dummybtn-@i" type="button" class="btn btn-sm btn-secondary invisible">dummy</button>
+                                                <button id="addbtn-@i" type="button" class="btn btn-sm btn-secondary visible"
+                                                        onclick="AddItem(this)" style="left:75%; position:absolute">
+                                                    Add
+                                                </button>
+                                                <button id="btnremove-@i" type="button" class="btn btn-sm btn-danger invisible"
+                                                        onclick="DeleteItem(this)" style="left:75%; position:absolute">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </fieldset>
+
+
                 </div>
             </div>
 

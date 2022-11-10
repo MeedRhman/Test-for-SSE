@@ -59,8 +59,20 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    color: #1b6ec2;
+}
+fieldset {
+    background-color: #eeeeee;
+    border: 1px solid #888; 
+    border-radius: 15px
+}
+
+legend {
+    background-color: gray;
+    color: blue;
+    padding: 5px 10px;
 }
 .footer {
   position: absolute;
