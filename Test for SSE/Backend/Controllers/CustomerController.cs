@@ -24,6 +24,7 @@ namespace Backend.Controllers
             _webHost = webHost;
         }
 
+        [HttpGet]
         public IEnumerable<Customer> Get()
         {
             List<Customer> Customers;

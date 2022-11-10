@@ -22,6 +22,7 @@ namespace Backend.Controllers
             _webHost = webHost;
         }
 
+        [HttpGet]
         public IEnumerable<Country> Get()
         {
             List<Country> Countories;

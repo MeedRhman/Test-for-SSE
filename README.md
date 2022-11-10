@@ -9,4 +9,5 @@
 	# Visual Studio 2019
 	# Postman For testing Web Api
 	# SQL Server 2017
+	# after create database excute script.sql
 	
