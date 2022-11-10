@@ -32,14 +32,14 @@ namespace FrontEnd.Controllers
         
 
       
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Create()
         {
             Customer customer = new Customer();
             customer.CustomerAddresses.Add(new CustomerAddress() { CustomerAddressId = 1});
             var countries = await GetCountryAsync();
           //  ViewData["Countries"] = new SelectList((System.Collections.IEnumerable)countries, "CountoryId", "CountryName");
             ViewBag.Countrylist =  new SelectList(countries, "CountoryId", "CountryName");
-            return View("Create", customer);
+            return View(customer);
         }
         [HttpPost]
         public IActionResult Create(Customer customer)
@@ -51,7 +51,7 @@ namespace FrontEnd.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             return View();

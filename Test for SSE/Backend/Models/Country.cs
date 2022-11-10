@@ -10,6 +10,8 @@ namespace Backend.Models
     {
         [Key]
         public int CountoryId { get; set; }
+        [Required]
+        [StringLength(100)]
         public string CountryName { get; set; }
 
         public ICollection<Customer> Customers { get; set; }

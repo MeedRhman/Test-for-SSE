@@ -142,7 +142,8 @@ C:\Users\SysApp\source\repos\Test for SSE\FrontEnd\obj\Debug\net5.0\FrontEnd.dll
 C:\Users\SysApp\source\repos\Test for SSE\FrontEnd\obj\Debug\net5.0\ref\FrontEnd.dll
 C:\Users\SysApp\source\repos\Test for SSE\FrontEnd\obj\Debug\net5.0\FrontEnd.pdb
 C:\Users\SysApp\source\repos\Test for SSE\FrontEnd\obj\Debug\net5.0\FrontEnd.genruntimeconfig.cache
-C:\Users\SysApp\source\repos\Test for SSE\FrontEnd\obj\Debug\net5.0\Razor\Views\Customer\Create.cshtml.g.cs
 C:\Users\SysApp\source\repos\Test for SSE\FrontEnd\obj\Debug\net5.0\Razor\Views\Customer\Upload.cshtml.g.cs
 C:\Users\SysApp\source\repos\Test for SSE\FrontEnd\obj\Debug\net5.0\Razor\Views\Shared\_CustomerName.cshtml.g.cs
 C:\Users\SysApp\source\repos\Test for SSE\FrontEnd\obj\Debug\net5.0\Razor\Views\Shared\Components\Customer\Default.cshtml.g.cs
+C:\Users\SysApp\source\repos\Test for SSE\FrontEnd\obj\Debug\net5.0\Razor\Views\Customer\Create1.cshtml.g.cs
+C:\Users\SysApp\source\repos\Test for SSE\FrontEnd\obj\Debug\net5.0\Razor\Views\Customer\Create.cshtml.g.cs
